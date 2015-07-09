@@ -868,7 +868,7 @@ function makePredicate(words) {
     cats.sort(function (a, b) {
       return b.length - a.length;
     });
-    f += "switch(str.length){";
+    f += "switch(str?str.length:0){";
     for (var i = 0; i < cats.length; ++i) {
       var cat = cats[i];
       f += "case " + cat[0].length + ":";
@@ -1046,12 +1046,12 @@ var pp = Parser.prototype;
 // of the error message, and then raises a `SyntaxError` with that
 // message.
 
-pp.raise = function (pos, message) {
+pp.raise = function (pos, message ) {
   var loc = getLineInfo(this.input, pos);
   message += " (" + loc.line + ":" + loc.column + ")";
   var err = new SyntaxError(message);
   err.pos = pos;err.loc = loc;err.raisedAt = this.pos;
-  throw err;
+//  throw err;
 };
 
 pp.curPosition = function () {

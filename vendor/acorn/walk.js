@@ -125,7 +125,7 @@ function findNodeAround(node, pos, test, base, state) {
   try {
     ;(function c(node, st, override) {
       var type = override || node.type;
-      if (node.start > pos || node.end < pos) {
+      if (!node || node.start > pos || node.end < pos) {
         return;
       }base[type](node, st, c);
       if (test(type, node)) throw new Found(node, st);
