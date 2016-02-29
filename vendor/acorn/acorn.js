@@ -1658,6 +1658,9 @@ pp.parseTopLevel = function (node) {
   if (!node.body) node.body = [];
   while (this.type !== tt.eof) {
     var stmt = this.parseStatement(true, true);
+    if(this.stmt.start > this.stmt.end){
+      break;
+    }
     node.body.push(stmt);
     if (first && this.isUseStrict(stmt)) this.setStrict(true);
     first = false;
