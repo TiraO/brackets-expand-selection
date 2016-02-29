@@ -1,0 +1,22 @@
+{
+  "name": "brackets-expand-selection",
+  "version": "1.0.0",
+  "description": "This Brackets extension provides a shortcut for expanding your selection, similar to the shortcut provided by Intellij products. It will be alt+up and alt+down by default.",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TiraO/brackets-expand-selection.git"
+  },
+  "keywords": [
+    "brackets",
+    "expand",
+    "selection",
+    "extension"
+  ],
+  "author": "Tira Odhner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TiraO/brackets-expand-selection/issues"
+  },
+  "homepage": "https://github.com/TiraO/brackets-expand-selection"
+}
