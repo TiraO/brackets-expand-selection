@@ -2,9 +2,14 @@
 define(function (require, exports, module) {
     //lodash is needed for acorn_loose to load.
     var _ = brackets.getModule("thirdparty/lodash");
+
+    var jsParserLoose  = require("text!vendor/acorn/acorn_loose.js");
     var jsParser = require('vendor/acorn/acorn');
-//    var jsParser  = require("vendor/acorn/acorn_loose");
+  window.acorn = require('vendor/acorn/acorn');
+  var jplReal = require("vendor/acorn/acorn_loose");
     var jsWalker = require('vendor/acorn/walk');
+  jsParser.banana = jsParserLoose;
+  var wtf = {jpl: jsParserLoose, jp: jsParser};
 
     var EditorManager       = brackets.getModule("editor/EditorManager"),
         CommandManager      = brackets.getModule("command/CommandManager"),
@@ -34,7 +39,13 @@ define(function (require, exports, module) {
                 (node.start <= absoluteSelectionStart && node.end > absoluteSelectionEnd) );
         };
         //TODO: use acorn_loose.parse_dammit instead of acorn.parse
-        var parsedDocument = jsParser.parse(documentFullText, {preserveParens:true});
+      console.log(wtf);
+        try {
+          debugger
+          var parsedDocument = jsParser.parse(documentFullText, {preserveParens:true});
+        } catch(e){
+          debugger; 
+        }
         var newSelectionNode = jsWalker.findNodeAround(parsedDocument, absoluteSelectionStart, function(nodeType, node){
             console.log(node);
             console.log(document.getText().substr(node.start, node.end));

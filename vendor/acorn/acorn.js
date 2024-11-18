@@ -1051,6 +1051,7 @@ pp.raise = function (pos, message ) {
   message += " (" + loc.line + ":" + loc.column + ")";
   var err = new SyntaxError(message);
   err.pos = pos;err.loc = loc;err.raisedAt = this.pos;
+  debugger;
 //  throw err;
 };
 
